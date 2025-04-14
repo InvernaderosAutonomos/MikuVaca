@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MIKU GORBERNA</title>
+  <link rel="icon" href="images.jpg" type="image/x-icon">
+  <style>
+    body {
+      margin: 0;
+      background-color: #000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      overflow: hidden;
+    }
+    .contenedor {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    video {
+      max-width: 80%;
+      max-height: 80%;
+    }
+    .icono {
+      width: 400px;
+      height: 400px;
+      margin: 105px;
+      animation: girar 1s linear infinite;
+    }
+    @keyframes girar {
+      0% {
+        transform: rotate(0deg);
+      }
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="contenedor">
+    <img src="images.jpg" class="icono">
+    <video id="miVideo" autoplay loop>
+      <source src="MIKUVACA.mp4">
+      Tu navegador no soporta video HTML5.
+    </video>
+    <img src="images.jpg" class="icono">
+  </div>
+
+  <script>
+    const video = document.getElementById("miVideo");
+    video.volume = 1.0;
+  </script>
+
+</body>
+</html>
