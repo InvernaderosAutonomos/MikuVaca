@@ -14,43 +14,107 @@
       align-items: center;
       height: 100vh;
       overflow: hidden;
+      color: #fff;
     }
     .contenedor {
       display: flex;
       align-items: center;
       justify-content: center;
+      flex-wrap: wrap;
     }
-    video {
+    img.animado {
       max-width: 80%;
       max-height: 80%;
     }
     .icono {
       width: 400px;
       height: 400px;
-      margin: 105px;
+      margin: 50px;
       animation: girar 1s linear infinite;
     }
     @keyframes girar {
-      0% {
-        transform: rotate(0deg);
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    .pantalla-inicial {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 20px;
+    }
+    .pantalla-inicial button {
+      padding: 20px 40px;
+      font-size: 30px;
+      background-color: #00ff88;
+      border: none;
+      border-radius: 15px;
+      cursor: pointer;
+      color: #000;
+      transition: background 0.3s;
+    }
+    .pantalla-inicial button:hover {
+      background-color: #00dd77;
+    }
+    #pagina {
+      display: none;
+    }
+
+    /* 📱 Responsive para pantallas pequeñas */
+    @media (max-width: 768px) {
+      .contenedor {
+        flex-direction: column;
       }
-      100% {
-        transform: rotate(360deg);
+      .icono {
+        width: 200px;
+        height: 200px;
+        margin: 20px;
+      }
+      img.animado {
+        max-width: 90%;
+        max-height: 90%;
+      }
+      .pantalla-inicial button {
+        font-size: 24px;
+        padding: 15px 30px;
       }
     }
   </style>
 </head>
 <body>
 
-  <div class="contenedor">
-    <img src="images.jpg" class="icono">
-    <video loop autoplay muted controls>
-      <source src="MIKUVACA.mp4" type="video/mp4">
-    </video>
-    <img src="images.jpg" class="icono">
+  <!-- Pantalla de inicio con botón -->
+  <div id="inicio" class="pantalla-inicial">
+    <h1>🎉 Dale clic para Descargar 🎉</h1>
+    <button onclick="mostrarPagina()">Descargar</button>
   </div>
 
+  <!-- Página original oculta al inicio -->
+  <div id="pagina">
+    <div class="contenedor">
+      <img src="images.jpg" class="icono">
+      <img src="MIKUVACA.gif" class="animado">
+      <img src="images.jpg" class="icono">
+    </div>
 
+    <audio id="miAudio" loop>
+      <source src="MIKUVACA.mp3" type="audio/mpeg">
+      Tu navegador no soporta audio HTML5.
+    </audio>
+  </div>
+
+  <script>
+    function mostrarPagina() {
+      // Oculta pantalla de inicio y muestra la página original
+      document.getElementById("inicio").style.display = "none";
+      document.getElementById("pagina").style.display = "block";
+
+      // Inicia el audio
+      const audio = document.getElementById("miAudio");
+      audio.play();
+    }
+  </script>
 
 </body>
 </html>
